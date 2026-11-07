@@ -75,7 +75,7 @@ public class Main {
         Arrays.fill(distance, -1);
 
         Queue<Integer> queue = new LinkedList<>();
-        List<Integer> order = new ArrayList<>();
+        List<Character> order = new ArrayList<>();
 
         visited[a] = true;
         distance[a] = 0;
@@ -83,7 +83,7 @@ public class Main {
 
         while (!queue.isEmpty()) {
             int current = queue.poll();
-            order.add(current);
+            order.add((char) ('A' + current));
 
             for (int i = 0; i < N; i++) {
                 if(matrix[current][i] > 0 && !visited[i]) {
@@ -156,8 +156,12 @@ public class Main {
             path.add(at);
         }
         Collections.reverse(path);
+        List<Character> letterPath = new ArrayList<>();
 
+        for (int vertex : path) {
+            letterPath.add((char) ('A' + vertex));
+        }
         System.out.println("Найкоротша відстань до " + target + ": " + dist[target]);
-        System.out.println("Шлях: " + path);
+        System.out.println("Шлях: " + letterPath);
     }
 }
